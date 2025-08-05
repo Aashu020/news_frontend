@@ -1,9 +1,16 @@
 // src/components/NewsCard.jsx
 import { useEffect, useState } from 'react';
-import { fetchNews } from './services/api';
+import { delNews, fetchNews } from '../services/api';
 
 export default function NewsCard() {
   const [newsList, setNewsList] = useState([]);
+
+  const deleteNews = (id) =>{
+    console.log(id)
+    delNews(id).then("Successfully deleted")
+    window.location.reload()
+
+  }
 
   useEffect(() => {
     fetchNews()
@@ -24,6 +31,7 @@ export default function NewsCard() {
               key={idx}
               className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300 flex flex-col h-full"
             >
+                <button onClick={() => deleteNews(news._id)}>X</button>
               <div className="h-48 w-full bg-gray-200 overflow-hidden">
                 <img
                   src={news.urlToImage || "https://via.placeholder.com/400x200?text=No+Image"}

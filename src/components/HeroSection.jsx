@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { fetchTopHeadlines } from './services/api';
+import { fetchTopHeadlines } from '../services/api';
 
 export default function HeroSection() {
   const [topNews, setTopNews] = useState([]);
